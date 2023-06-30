@@ -1,2 +1,0 @@
-raw.githubusercontent.com/fernandezpablo85/name_suggestions/master/assets/dict.csv
-https://source.unsplash.com/random/900%C3%97700/?person
