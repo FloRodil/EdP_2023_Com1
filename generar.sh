@@ -1,4 +1,5 @@
 #!/bin/bash
+# Script Generar
 
 ARCHIVO_CSV="./dataset/dict.csv"
 CANT_FILAS=$(wc -l < "$ARCHIVO_CSV")
@@ -36,14 +37,21 @@ while [ $VALOR -lt $CANT ]; do
 		else
         		GENERO="male"
 		fi
-		wget https://source.unsplash.com/random/900%C3%97700/?$GENERO -O $DIRECTORIO_DESCARGAS/$NOMBRE_MAYUSC.tfif
+		wget https://source.unsplash.com/random/600x900/?$GENERO -O $DIRECTORIO_DESCARGAS/$NOMBRE_MAYUSC.jpg
 		sleep 1
     		#echo "Nombre al azar: $NOMBRE_MAYUSC es: $GENERO en fila: $FILA_RANDOM total filas: $CANT_FILAS"
 		else
-		wget https://source.unsplash.com/random/900%C3%97700/?pet -O $DIRECTORIO_DESCARGAS/$FILA_RANDOM.tfif
+		wget https://source.unsplash.com/random/600x900/?pet -O $DIRECTORIO_DESCARGAS/$FILA_RANDOM.jpg
 		sleep 1
     		#echo "La fila no tiene nombre, el apellido es: $MATRIZ_VALOR fila: $FILA_RANDOM"
 	fi
 	((VALOR+=1))
 done
-
+# Comprime las imágenes descargadas y genera una suma de verificación para el archivo comprimido.
+echo "Descarga exitosa."
+sleep 2
+echo "Comprimiendo..."
+sleep 2
+NOMBRE=$(date +"%d-%m-%y_%H:%M")
+tar -cvf $DIRECTORIO_DESCARGAS/$NOMBRE.tar ./dataset/descargas/*.jpg
+sha512sum $DIRECTORIO_DESCARGAS/$NOMBRE.tar >> $DIRECTORIO_DESCARGAS/$NOMBRE.txt
