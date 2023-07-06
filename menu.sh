@@ -23,11 +23,11 @@ if [ ! -f "$DIRECTORIO_DATASET/$ARCHIVO_NOMBRES" ]; then
 	#echo "El archivo de nombres se encuentra en el sistema."
 fi
 
-# Verifica que el directorio 'descargas' no contiene archivos .tar 
+# Verifica que el directorio 'descargas' no contiene archivos .tar
 #if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.tar" | wc -l)" -eq 0 ]; then
 
-# Verifica que el directorio 'descargas' no contiene archivos .tfif ###
-if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.tfif" | wc -l)" -eq 0 ]; then ###
+# Verifica que el directorio 'descargas' no contiene archivos .jpg ###
+if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.jpg" | wc -l)" -eq 0 ]; then ###
 	clear
 	echo
 	echo "   ┌──────────────────────────┐"
@@ -40,14 +40,25 @@ if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.tfif" | wc -l)
 	echo -e "   │  \e[9mX-Procesar\e[0m              │"
 	echo "   │                          │"
 	echo -e "   │  \e[9mX-Comprimir\e[0m             │"
+	echo "   │                          │"
+	echo "   │  X - Salir               │"
 	echo "   └──────────────────────────┘"
 	echo
 	read -p "   Cantidad de imágenes a generar: " CANT
-	if [ $CANT -eq "0" ]; then
+	if [ $CANT == "0" ]; then
+		sleep 2
 		bash menu.sh
-	elif [ $CANT -gt 0 ]; then
+	elif [[ $CANT -gt 0 ]]; then
+		sleep 2
 		bash generar.sh $CANT
-        fi
+	elif [[ $CANT == "X" ]] || [[ $CANT == "x" ]]; then
+		clear
+		echo
+		echo "...Saliendo."
+		sleep 3
+		clear
+		exit 0
+    	fi
 	sleep 2
 	bash menu.sh
 else
@@ -63,11 +74,13 @@ else
 	echo "   │  3-Procesar              │"
 	echo "   │                          │"
 	echo "   │  4-Comprimir             │"
+	echo "   │                          │"
+        echo "   │  X-Salir                 │"
 	echo "   └──────────────────────────┘"
 	echo
 	read -p "    Tu opción: " OPC
 
-	if [ $OPC -eq "1" ]; then
+	if [[ $OPC -eq "1" ]]; then
 		clear
 		echo
 		echo "   ┌──────────────────────────┐"
@@ -77,15 +90,17 @@ else
 		echo "   └──────────────────────────┘"
 		echo
 		read -p "    Ingrese cantidad: " CANT
-		if [ $CANT -eq "0" ]; then
+		if [[ $CANT -eq "0" ]]; then
+			sleep 2
 			bash menu.sh
-		elif [ $CANT -gt 0 ]; then
+		elif [[ $CANT -gt 0 ]]; then
+			sleep 1
 			bash generar.sh $CANT
 		fi
-		sleep 2
+		sleep 3
 		bash menu.sh
 
-	elif [ $OPC -eq "2" ]; then
+	elif [[ $OPC -eq "2" ]]; then
         	clear
       		echo
 		echo "   ┌──────────────────────────┐"
@@ -95,38 +110,46 @@ else
         	echo "   └──────────────────────────┘"
 		echo
 		echo "    Archivos disponibles:"
-		
+
 		DESCARGAS=./dataset/descargas/
 		IFS=$'\n'
     		BUSCAR_EN="$DESCARGAS"
     		for ARCHIVO in $(ls $BUSCAR_EN); do
-        		echo "    - "$ARCHIVO
+        	echo "    - "$ARCHIVO
     		done
-		
+
 		echo
-		read -p "   Ingrese nombres de archivos: " NOMB_ARCHIVOS
-		if [ $NOMB_ARCHIVOS -eq "0" ]; then
+		read -p "   Ingrese nombres de archivos: " NOMB_1 NOMB_2
+		if [[ $NOMB_1 -eq "0" ]]; then
                 	bash menu.sh
 		else
-			bash descomprimir.sh $NOMBRE_ARCHIVOS
+			bash descomprimir.sh $NOMB_1 $NOM_2
+			sleep 2
 		fi
 		sleep 2
                 bash menu.sh
 
-	elif [ $OPC -eq "3" ]; then
+	elif [[ $OPC -eq "3" ]]; then
 		clear
 		echo
         	echo "Procesando..."
 		sleep 2
                 bash menu.sh
 
-	elif [ $OPC -eq "4" ]; then
+	elif [[ $OPC -eq "4" ]]; then
 		clear
 		echo
         	echo "Comprimiendo..."
 		sleep 2
                 bash menu.sh
 
+	elif [[ $OPC == "X" ]] || [[ $OPC == "x" ]]; then
+		clear
+		echo
+       		echo "...Chau."
+ 		sleep 2
+		clear
+		exit 0
 	else
 		echo "Opción no válida"
 		echo "Intente nuevamente:"
@@ -134,3 +157,4 @@ else
 		bash menu.sh
 	fi
 fi
+
