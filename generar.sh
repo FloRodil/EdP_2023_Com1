@@ -39,16 +39,9 @@ while [ $VALOR -lt $CANT ]; do
 		fi
 		wget https://source.unsplash.com/random/600x900/?$GENERO -O $DIRECTORIO_DESCARGAS/$NOMBRE_MAYUSC.jpg
 		sleep 1
-    		#echo "Nombre al azar: $NOMBRE_MAYUSC es: $GENERO en fila: $FILA_RANDOM total filas: $CANT_FILAS"
-		else
+	else
 		wget https://source.unsplash.com/random/600x900/?pet -O $DIRECTORIO_DESCARGAS/$FILA_RANDOM.jpg
-		wget https://source.unsplash.com/random/900%C3%97700/?$GENERO -O $DIRECTORIO_DESCARGAS/$NOMBRE_MAYUSC.tfif
 		sleep 1
-    		#echo "Nombre al azar: $NOMBRE_MAYUSC es: $GENERO en fila: $FILA_RANDOM total filas: $CANT_FILAS"
-		else
-		wget https://source.unsplash.com/random/900%C3%97700/?pet -O $DIRECTORIO_DESCARGAS/$FILA_RANDOM.tfif
-		sleep 1
-    		#echo "La fila no tiene nombre, el apellido es: $MATRIZ_VALOR fila: $FILA_RANDOM"
 	fi
 	((VALOR+=1))
 done
