@@ -24,10 +24,7 @@ if [ ! -f "$DIRECTORIO_DATASET/$ARCHIVO_NOMBRES" ]; then
 fi
 
 # Verifica que el directorio 'descargas' no contiene archivos .tar
-#if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.tar" | wc -l)" -eq 0 ]; then
-
-# Verifica que el directorio 'descargas' no contiene archivos .jpg ###
-if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.jpg" | wc -l)" -eq 0 ]; then ###
+if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.tar" | wc -l)" -eq 0 ]; then
 	clear
 	echo
 	echo "   ┌──────────────────────────┐"
