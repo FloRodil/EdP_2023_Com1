@@ -131,11 +131,17 @@ else
 		clear
 		echo
                 bash procesar.sh
+		sleep 2
+                bash menu.sh
+
 
 	elif [[ $OPC -eq "4" ]]; then
 		clear
 		echo
                 bash comprimir.sh
+		sleep 2
+                bash menu.sh
+
 
 	elif [[ $OPC == "X" ]] || [[ $OPC == "x" ]]; then
 		clear
