@@ -1,4 +1,5 @@
 #!/bin/bash
+#Script Descomprimir
 
 # Verifica que recibe dos argumentos.
 if [ $# -eq 2 ]; then
