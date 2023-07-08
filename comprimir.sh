@@ -9,10 +9,6 @@ if [ ! -d $RUTA_C ]; then
 	mkdir ./dataset/comprimidos
 fi
 
-# Mueve los archivos img_names.txt y img_names_val.txt al directorio temp.
-#mv "$RUTA_D"/img_names.txt "$RUTA_D"/temp
-#mv "$RUTA_D"/img_names_val.txt "$RUTA_D"/temp
-
 # Genera un archivo con los nombres y el total de nombres finalizados en "a".
 IFS=$'\n'
 CANT=0
