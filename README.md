@@ -41,19 +41,30 @@ verificación del archivo comprimido.
 **img**
 
 ##### Descomprimir archivo
-Para descomprimir se deben ingresar los nombres completos de dos de los archivos
-listados dentro de 'Archivos disponibles: ' ambos separados por un espacio en blanco
-el primero debe hacer referencia al archivo comprimido con su extensión .tar y el
-segundo al archivo de texto que contiene la suma de verificación, también con su
-extension .txt, ó ingresar '0' para regresar al MENÚ principal.
+Al seleccionar la opción '2-Descomprimir', ingresando por teclado 'Tu opción: 'el número '2,
+aparece un listado de 'Archivos disponibles'. A continuación se deben ingresar los nombres
+completos de dos de los archivos listados, ambos separados por un espacio en blanco. El
+primero debe hacer referencia al archivo comprimido con su extensión .tar y el segundo al
+archivo de texto que contiene la suma de verificación, también con su extension .txt, ó ingresar
+'0' para regresar al MENÚ principal.
 
 **img**
 
 ##### Procesar
+Al seleccionar la opción '3-Procesar', ingresando por teclado 'Tu opción: 'el número '3, se
+recortarán a 512x512 px todas las imágenes resultantes de la descompresión cuyo nombre de
+archivo sea un nombre de persona válido, esto es una palabra que empiece con una letra mayúscula
+seguida de letras minúsculas.
 
 **img**
 
 ##### Comprimir
+Al seleccionar la opción '4-Comprimir', ingresando por teclado 'Tu opción: 'el número '4, se
+generará un archivo comprimido conteniendo todas las imágenes procesadas y tres archivos que
+contendrán, respectivamente, una lista con el nombre de todas las imágenes generadas, una lista 
+de nombres válidos y una lista con los nombres válidos finalizados con la letra 'a' y la cantidad 
+total de los mismos.
+
 
 **img**
 
