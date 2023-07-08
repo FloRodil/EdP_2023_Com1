@@ -1,4 +1,5 @@
 #!/bin/bash
+#Script Menu
 
 clear
 # Comprueba que exista la carpeta dataset.
@@ -129,16 +130,12 @@ else
 	elif [[ $OPC -eq "3" ]]; then
 		clear
 		echo
-        	echo "Procesando..."
-		sleep 2
-                bash menu.sh
+                bash procesar.sh
 
 	elif [[ $OPC -eq "4" ]]; then
 		clear
 		echo
-        	echo "Comprimiendo..."
-		sleep 2
-                bash menu.sh
+                bash comprimir.sh
 
 	elif [[ $OPC == "X" ]] || [[ $OPC == "x" ]]; then
 		clear
