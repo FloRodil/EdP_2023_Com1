@@ -4,8 +4,8 @@
 # Verifica que recibe dos argumentos.
 if [ $# -eq 2 ]; then
 	# Verifica que los archivos pasados como argumentos existan en la carpeta.
-	RUTA_ARCH="./dataset/descargas/"
-	if [ ! -f $RUTA_ARCH$1 ] || [ ! -f $RUTA_ARCH$2 ]; then
+	RUTA_ARCH="./dataset/descargas"
+	if [ ! -f $RUTA_ARCH/$1 ] || [ ! -f $RUTA_ARCH/$2 ]; then
 		echo
 		echo "El/los archivo/s no existe/n"
 		sleep 5
@@ -17,11 +17,8 @@ if [ $# -eq 2 ]; then
 			mkdir -p $DESCOMPRIMIDOS
 		fi
 		# Verifica la integridad de archivo.
-		NRO_SHA=$(sha512sum $RUTA_ARCH$1 | cut -d' ' -f 1)
-		NRO_TXT=$(cut -d' ' -f 1 $RUTA_ARCH$2)
-		#echo $NRO_SHA
-		#echo $NRO_TXT
-		#sleep 25
+		NRO_SHA=$(sha512sum $RUTA_ARCH/$1 | cut -d' ' -f 1)
+		NRO_TXT=$(cut -d' ' -f 1 $RUTA_ARCH/$2)
 		if [[ $NRO_SHA == $NRO_TXT ]]; then
 			clear
 			echo
@@ -31,12 +28,11 @@ if [ $# -eq 2 ]; then
 			echo
 			echo "Descomprimiendo archivos:"
 			echo
-			tar -xvf $RUTA_ARCH$1 -C $DESCOMPRIMIDOS
+			tar -xvf $RUTA_ARCH/$1 -C $DESCOMPRIMIDOS
 			sleep 4
 			clear
 			bash menu.sh
 		else
-			echo $?
 			echo
 			echo "Ocurrió un error con el archivo, no pasó prueba de integridad"
 			sleep 5
