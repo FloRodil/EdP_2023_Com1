@@ -1,9 +1,9 @@
 # TP Entorno de Programación - 2023
-## Comisión 1
-### Integrantes: 
-### Rodil, Florencia - R-4680/9
-### Sorbellini, Jorge - S-5790/8
-### Urtubey, Maximiliano - U-0553/3
+### Comisión 1
+#### Integrantes: 
+#### Rodil, Florencia - R-4680/9
+#### Sorbellini, Jorge - S-5790/8
+#### Urtubey, Maximiliano - U-0553/3
 
 ## GADI
 GADI (Generador Aleatorio De Imágenes) es un programa que permite al usuario
@@ -14,7 +14,7 @@ un paquete comprimido de las imágenes previamente procesadas, en formato .tar,
 que incluye información de todos los archivos.
 
 ### Modo de Uso
-#### Ejecución del Script
+### Ejecución del Script
 El script se ejecuta corriendo el siguiente comando: docker run gadi
 En la terminal se muestra un menú -que si es la primera vez que se ejecuta-
 el script descargará automáticamente los archivos y creará las carpetas
@@ -30,8 +30,8 @@ disponibles.
 
 **img**
 
-#### Uso del MENÚ principal
-##### Generar imágenes
+### Uso del MENÚ principal
+### Generar imágenes
 Una vez ejecutado el script se mostrará la opción de '1-Generar imágenes',
 para acceder a ella se debe ingresar por teclado, luego de 'Tu opción: ', el
 número '1'. A continuación se mostrará otro menú donde se debe ingresar la
@@ -44,7 +44,7 @@ tienen el formato día y mes seguidos por la hora de su creación
 
 **img**
 
-##### Descomprimir archivo
+### Descomprimir archivo
 Al seleccionar la opción '2-Descomprimir archivo', ingresando por teclado el
 número '2', aparecerá un listado de 'Archivos disponibles'. A continuación
 se deben ingresar los nombres completos de dos de los archivos listados, ambos
@@ -55,7 +55,7 @@ regresar al MENÚ principal.
 
 **img**
 
-##### Procesar
+### Procesar
 Al seleccionar la opción '3-Procesar', ingresando por teclado el número '3',
 se recortarán a 512x512 px todas las imágenes resultantes de la descompresión
 cuyo nombre de archivo sea un nombre de persona válido, esto es, una palabra
@@ -65,7 +65,7 @@ para evitar que futuros procesamientos incluyan imágenes ya procesadas.
 
 **img**
 
-##### Comprimir
+### Comprimir
 Al seleccionar la opción '4-Comprimir', ingresando por teclado el número '4',
 se generará un archivo comprimido, en la carpeta '/app/dataset/comprimidos'
 conteniendo todas las imágenes procesadas y tres archivos que contendrán,
