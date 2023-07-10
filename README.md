@@ -34,6 +34,7 @@ disponibles.
 
 
 ### Uso del MENÚ principal
+![alt text](https://iili.io/HsXtmDG.jpg)
 ### Generar imágenes
 Una vez ejecutado el script se mostrará la opción de '1-Generar imágenes',
 para acceder a ella se debe ingresar por teclado, luego de 'Tu opción: ', el
@@ -44,7 +45,7 @@ dentro de la carpeta '/app/dataset/descargas' junto con un archivo con el
 número de la suma de verificación del .tar. Los nombres de ambos archivos
 tienen el formato día y mes seguidos por la hora de su creación
 ('ddmm-hhmmss.tar' y 'ddmm-hhmmss.txt').
-
+![alt text](https://iili.io/HsXDG0N.jpg)
 
 ### Descomprimir archivo
 Al seleccionar la opción '2-Descomprimir archivo', ingresando por teclado el
@@ -54,7 +55,7 @@ separados por un espacio en blanco. El primero debe hacer referencia al archivo
 comprimido con su extensión .tar y el segundo al archivo de texto que contiene
 la suma de verificación, también con su extension .txt, o ingresar '0' para
 regresar al MENÚ principal.
-
+![alt text](https://iili.io/HsXDr79.jpg)
 
 ### Procesar
 Al seleccionar la opción '3-Procesar', ingresando por teclado el número '3',
