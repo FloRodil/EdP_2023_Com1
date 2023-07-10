@@ -13,10 +13,12 @@ personas y las procesa para darles un formato de 512x512 px para luego formar
 un paquete comprimido de las imágenes previamente procesadas, en formato .tar,
 que incluye información de todos los archivos.
 
+### Creación de la imagen de Docker y ejecución del script:
+1- Descargar el archivo ´Dockerfile'
+2- Ejecutar el siguiente comando: 'docker build -t gadi .'
+3- Correr el siguiente script: 'bash runGADI.sh'
 
 ### Modo de Uso
-### Ejecución del Script
-El script se ejecuta corriendo el siguiente script: 'bash runGADI.sh'
 En la terminal se muestra un menú -que si es la primera vez que se ejecuta-
 el script descargará automáticamente los archivos y creará las carpetas
 'dataset' y 'descargas', necesarios para el procesamiento. Una vez terminadas
@@ -65,12 +67,11 @@ proporcionadas tiene como nombre un nombre de persona.
 
 ### Comprimir
 Al seleccionar la opción '4-Comprimir', ingresando por teclado el número '4',
-se generará un archivo comprimido, en la carpeta '/app/dataset/comprimidos'
-conteniendo todas las imágenes procesadas y tres archivos que contendrán,
-respectivamente, una lista con el nombre de todas las imágenes generadas, una
-lista de nombres válidos y una lista con los nombres válidos finalizados con
-la letra 'a' y la cantidad total de los mismos.
-El archivo comprimido, resultante del script, tendrá como nombre la fecha y
-hora de su creación y estará disponible en /app/comprimidos.
-Si Comprimir muestra el error 'Tiene ... antes de comprimir' es porque es
+se generará un archivo comprimido conteniendo todas las imágenes procesadas y
+tres archivos que contendrán, respectivamente, una lista con el nombre de
+todas las imágenes generadas, una lista de nombres válidos y una lista con
+los nombres válidos finalizados con la letra 'a' y la cantidad total de los
+mismos. El archivo comprimido, resultante del script, tendrá como nombre la
+fecha y hora de su creación y estará disponible en /GADI/comprimidos. Si
+Comprimir muestra el error 'Tiene ... antes de comprimir' es porque es
 necesario que el paso previo sea un procesamiento de imágenes válidas.
