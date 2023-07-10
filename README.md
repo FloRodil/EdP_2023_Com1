@@ -21,13 +21,13 @@ que incluye información de todos los archivos.
 ### Modo de Uso
 ![alt text](https://iili.io/HsXt6VR.jpg)
 En la terminal se muestra un menú -que si es la primera vez que se ejecuta-
-el script descargará automáticamente los archivos y creará las carpetas
-'dataset' y 'descargas', necesarios para el procesamiento. Una vez terminadas
-las comprobaciones se muestra el MENÚ principal el que sólo visualizará la
-opción de generar imágenes o de terminar el programa. Para generar las
-imágenes se debe ingresar por teclado un número para indicar la cantidad de
-archivos a descargar. Para terminar con la ejecución del programa y regresar
-a la terminal, se debe ingresar la letra 'X'.
+el script automáticamente descargará los archivos y creará las carpetas
+necesarios para el procesamiento. Una vez terminadas las comprobaciones se
+muestra el MENÚ principal el que sólo visualizará la opción de generar
+imágenes o de terminar el programa. Para generar las imágenes se debe
+ingresar por teclado un número para indicar la cantidad de archivos a
+descargar. Para terminar con la ejecución del programa y regresar a la
+terminal, se debe ingresar la letra 'X'.
 En caso de que el programa se hubiese ejecutado previamente y exitan archivos
 para descomprimir se mostrará el MENÚ completo con todas las opciones
 disponibles.
