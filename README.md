@@ -14,9 +14,9 @@ un paquete comprimido de las imágenes previamente procesadas, en formato .tar,
 que incluye información de todos los archivos.
 
 ### Creación de la imagen de Docker y ejecución del script:
-1- Descargar el archivo ´Dockerfile'
-2- Ejecutar el siguiente comando: 'docker build -t gadi .'
-3- Correr el siguiente script: 'bash runGADI.sh'
+1. Descargar el archivo ´Dockerfile'
+2. Ejecutar el siguiente comando: 'docker build -t gadi .'
+3. Correr el siguiente script: 'bash runGADI.sh'
 
 ### Modo de Uso
 En la terminal se muestra un menú -que si es la primera vez que se ejecuta-
