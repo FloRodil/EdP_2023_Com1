@@ -45,6 +45,7 @@ dentro de la carpeta '/app/dataset/descargas' junto con un archivo con el
 número de la suma de verificación del .tar. Los nombres de ambos archivos
 tienen el formato día y mes seguidos por la hora de su creación
 ('ddmm-hhmmss.tar' y 'ddmm-hhmmss.txt').
+
 ![alt text](https://iili.io/HsXDG0N.jpg)
 
 ### Descomprimir archivo
@@ -55,6 +56,7 @@ separados por un espacio en blanco. El primero debe hacer referencia al archivo
 comprimido con su extensión .tar y el segundo al archivo de texto que contiene
 la suma de verificación, también con su extension .txt, o ingresar '0' para
 regresar al MENÚ principal.
+
 ![alt text](https://iili.io/HsXDr79.jpg)
 
 ### Procesar
