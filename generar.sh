@@ -1,12 +1,13 @@
 #!/bin/bash
-# Script Generar
+#Script Generar
 
-ARCHIVO_CSV="./dataset/dict.csv"
+RUTA_M="/app/scripts"
+ARCHIVO_CSV="/app/dataset/dict.csv"
 CANT_FILAS=$(wc -l < "$ARCHIVO_CSV")
 GENERO=''
 
 # Comprueba que exista la carpeta descargas.
-DIRECTORIO_DESCARGAS="./dataset/descargas"
+DIRECTORIO_DESCARGAS="/app/dataset/descargas"
 if [ ! -d "$DIRECTORIO_DESCARGAS" ]; then
 	echo "Directorio descargas inexistente, creando directorio..."
 	mkdir -p "$DIRECTORIO_DESCARGAS"
@@ -18,13 +19,10 @@ fi
 CANT=$1
 VALOR=0
 while [ $VALOR -lt $CANT ]; do
-	
-	FILA_RANDOM=$((1 + RANDOM % CANT_FILAS)) ###
-	PRIMER_VALOR=$(sed -n "${FILA_RANDOM}p" "$ARCHIVO_CSV" | cut -d',' -f1) ###
-
+	FILA_RANDOM=$((1 + RANDOM % CANT_FILAS))
+	PRIMER_VALOR=$(sed -n "${FILA_RANDOM}p" "$ARCHIVO_CSV" | cut -d',' -f1)
 	# Divide el contenido de 'primer_valor' en un array de palabras.
 	IFS=' ' read -ra MATRIZ_VALOR <<< "$PRIMER_VALOR"
-
 	# Verifica si el array contiene más de una palabra.
 	if [ "${#MATRIZ_VALOR[@]}" -gt 1 ]; then
 		# Extrae la segunda palabra de la matriz.
@@ -46,10 +44,22 @@ while [ $VALOR -lt $CANT ]; do
 	((VALOR+=1))
 done
 # Comprime las imágenes descargadas y genera una suma de verificación para el archivo comprimido.
+clear
+echo
 echo "Descarga exitosa."
-sleep 2
-echo "Comprimiendo..."
-sleep 2
-NOMBRE=$(date +"%d-%m-%y_%H:%M")
-tar -cvf $DIRECTORIO_DESCARGAS/$NOMBRE.tar ./dataset/descargas/*.jpg
+sleep 1
+clear
+echo
+echo "Comprimiendo los siguientes archivos:"
+sleep 0.5
+NOMBRE=$(date +"%d%m-%H%M%S")
+cd $DIRECTORIO_DESCARGAS
+tar -cvf "$DIRECTORIO_DESCARGAS/$NOMBRE".tar *.jpg
+sleep 1
 sha512sum $DIRECTORIO_DESCARGAS/$NOMBRE.tar >> $DIRECTORIO_DESCARGAS/$NOMBRE.txt
+rm $DIRECTORIO_DESCARGAS/*.jpg
+echo
+echo "Compresión finalizada."
+sleep 1
+bash $RUTA_M/menu.sh
+clear
