@@ -19,7 +19,7 @@ que incluye información de todos los archivos.
 3. Correr el siguiente script: 'bash runGADI.sh'
 
 ### Modo de Uso
-https://iili.io/HsXt6VR.jpg
+![alt text](https://iili.io/HsXt6VR.jpg)
 En la terminal se muestra un menú -que si es la primera vez que se ejecuta-
 el script descargará automáticamente los archivos y creará las carpetas
 'dataset' y 'descargas', necesarios para el procesamiento. Una vez terminadas
