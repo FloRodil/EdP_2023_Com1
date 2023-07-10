@@ -1,20 +1,21 @@
 #!/bin/bash
 #Script Descomprimir
 
+RUTA_M="/app/scripts"
 # Verifica que recibe dos argumentos.
 if [ $# -eq 2 ]; then
 	# Verifica que los archivos pasados como argumentos existan en la carpeta.
-	RUTA_ARCH="./dataset/descargas"
+	RUTA_ARCH="/app/dataset/descargas"
 	if [ ! -f $RUTA_ARCH/$1 ] || [ ! -f $RUTA_ARCH/$2 ]; then
 		echo
-		echo "El/los archivo/s no existe/n"
+		echo "   El/los archivo/s no existe/n."
 		sleep 5
-		bash menu.sh
+		bash $RUTA_M/menu.sh
 	else
 		# Verifica que exista la carpeta "descomprimidos" si no existe la crea.
-                DESCOMPRIMIDOS="./dataset/descomprimidos"
+                DESCOMPRIMIDOS="/app/dataset/descomprimidos"
 		if [ ! -d $DESCOMPRIMIDOS ];then
-			mkdir -p $DESCOMPRIMIDOS
+			mkdir $DESCOMPRIMIDOS
 		fi
 		# Verifica la integridad de archivo.
 		NRO_SHA=$(sha512sum $RUTA_ARCH/$1 | cut -d' ' -f 1)
@@ -22,28 +23,27 @@ if [ $# -eq 2 ]; then
 		if [[ $NRO_SHA == $NRO_TXT ]]; then
 			clear
 			echo
-			echo "Verificación exitosa"
+			echo "   Verificación exitosa."
 			sleep 1
 			clear
 			echo
-			echo "Descomprimiendo archivos:"
+			echo "   Descomprimiendo archivos..."
+			sleep 1
 			echo
 			tar -xvf $RUTA_ARCH/$1 -C $DESCOMPRIMIDOS
-			sleep 4
 			clear
-			bash menu.sh
+			bash $RUTA_M/menu.sh
 		else
 			echo
-			echo "Ocurrió un error con el archivo, no pasó prueba de integridad"
+			echo "   Ocurrió un error con el archivo,"
+		        echo "   no pasó prueba de integridad."
 			sleep 5
-			bash menu.sh
+			bash $RUTA_M/menu.sh
 		fi
 	fi
 else
 	echo
-	echo "Se esperan dos argumentos"
-	sleep 5
-	bash menu.sh
+	echo "   Se esperan DOS(2) argumentos."
+	sleep 2
+	bash $RUTA_M/menu.sh
 fi
-
-
