@@ -1,16 +1,13 @@
 #!/bin/bash
+#Script Menu
 
 clear
 # Comprueba que exista la carpeta dataset.
-DIRECTORIO_DATASET="./dataset"
-DIRECTORIO_DESCARGAS="./dataset/descargas"
+DIRECTORIO_DATASET="/app/dataset"
+DIRECTORIO_DESCARGAS="/app/dataset/descargas"
 if [ ! -d "$DIRECTORIO_DESCARGAS" ]; then
         mkdir -p "$DIRECTORIO_DESCARGAS"
-        #echo "...El directorio no existe..."
         echo "Se creó el directorio DESCARGAS exitosamente."
-        sleep 2
-#else
-	#echo "El directorio existe."
 fi
 
 # Comprueba de que el archivo con los nombres esté en la carpeta dataset.
@@ -19,15 +16,11 @@ if [ ! -f "$DIRECTORIO_DATASET/$ARCHIVO_NOMBRES" ]; then
 	wget -P "$DIRECTORIO_DATASET" "https://raw.githubusercontent.com/fernandezpablo85/name_suggestions/master/assets/$ARCHIVO_NOMBRES"
 	echo "El arhivo con los nombres se descargó correctamente."
 	sleep 2
-#else
-	#echo "El archivo de nombres se encuentra en el sistema."
 fi
 
-# Verifica que el directorio 'descargas' no contiene archivos .tar 
-#if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.tar" | wc -l)" -eq 0 ]; then
-
-# Verifica que el directorio 'descargas' no contiene archivos .tfif ###
-if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.tfif" | wc -l)" -eq 0 ]; then ###
+RUTA_M="/app/scripts"
+# Verifica que el directorio 'descargas' no contiene archivos .tar
+if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.tar" | wc -l)" -eq 0 ]; then
 	clear
 	echo
 	echo "   ┌──────────────────────────┐"
@@ -35,21 +28,35 @@ if [ "$(find "$DIRECTORIO_DESCARGAS" -maxdepth 1 -type f -name "*.tfif" | wc -l)
 	echo "   ├──────────────────────────┤"
 	echo "   │  - Generar imágenes      │"
 	echo "   │                          │"
-	echo -e "   │  \e[9mX-Descomprimir\e[0m          │"
+	echo -e "   │  \e[9m- Descomprimir\e[0m          │"
 	echo "   │                          │"
-	echo -e "   │  \e[9mX-Procesar\e[0m              │"
+	echo -e "   │  \e[9m- Procesar\e[0m              │"
 	echo "   │                          │"
-	echo -e "   │  \e[9mX-Comprimir\e[0m             │"
+	echo -e "   │  \e[9m- Comprimir\e[0m             │"
+	echo "   │                          │"
+	echo "   │  X - Salir               │"
 	echo "   └──────────────────────────┘"
 	echo
 	read -p "   Cantidad de imágenes a generar: " CANT
-	if [ $CANT -eq "0" ]; then
-		bash menu.sh
-	elif [ $CANT -gt 0 ]; then
-		bash generar.sh $CANT
-        fi
-	sleep 2
-	bash menu.sh
+	if [[ $CANT < 0 ]]; then
+		echo
+		echo "   La cantidad debe ser mayor que cero."
+		sleep 1.5
+		bash $RUTA_M/menu.sh
+	elif [[ $CANT -gt 0 ]]; then
+		bash $RUTA_M/generar.sh $CANT
+	elif [[ $CANT == "X" ]] || [[ $CANT == "x" ]] || [[ $OPC == "exit" ]]; then
+		clear
+		echo
+		echo "...Saliendo."
+		sleep 1
+		clear
+		exit 0
+	else
+		echo "   Opción no válida"
+		echo "   Intente nuevamente:"
+		sleep 2
+    	fi
 else
 	clear
 	echo
@@ -63,11 +70,13 @@ else
 	echo "   │  3-Procesar              │"
 	echo "   │                          │"
 	echo "   │  4-Comprimir             │"
+	echo "   │                          │"
+        echo "   │  X-Salir                 │"
 	echo "   └──────────────────────────┘"
 	echo
 	read -p "    Tu opción: " OPC
 
-	if [ $OPC -eq "1" ]; then
+	if [[ $OPC -eq "1" ]]; then
 		clear
 		echo
 		echo "   ┌──────────────────────────┐"
@@ -77,15 +86,18 @@ else
 		echo "   └──────────────────────────┘"
 		echo
 		read -p "    Ingrese cantidad: " CANT
-		if [ $CANT -eq "0" ]; then
-			bash menu.sh
-		elif [ $CANT -gt 0 ]; then
-			bash generar.sh $CANT
+		if [[ $CANT -eq "0" ]]; then
+			sleep 1
+			bash $RUTA_M/menu.sh
+		elif [[ $CANT -gt 0 ]]; then
+			sleep 1
+			bash $RUTA_M/generar.sh $CANT
+			sleep 1
+		else
+			echo "Opción no válida."
 		fi
-		sleep 2
-		bash menu.sh
-
-	elif [ $OPC -eq "2" ]; then
+	
+	elif [[ $OPC -eq "2" ]]; then
         	clear
       		echo
 		echo "   ┌──────────────────────────┐"
@@ -95,42 +107,46 @@ else
         	echo "   └──────────────────────────┘"
 		echo
 		echo "    Archivos disponibles:"
-		
-		DESCARGAS=./dataset/descargas/
+
 		IFS=$'\n'
-    		BUSCAR_EN="$DESCARGAS"
-    		for ARCHIVO in $(ls $BUSCAR_EN); do
-        		echo "    - "$ARCHIVO
+		for ARCHIVO in $(ls $DIRECTORIO_DESCARGAS); do
+        	echo "    - "$ARCHIVO
     		done
-		
+
+		IFS=$' '
 		echo
-		read -p "   Ingrese nombres de archivos: " NOMB_ARCHIVOS
-		if [ $NOMB_ARCHIVOS -eq "0" ]; then
-                	bash menu.sh
+		read -p "   Ingrese nombres de archivos: " NOMB_1 NOMB_2
+		if [[ $NOMB_1 == "0" ]]; then
+                	bash $RUTA_M/menu.sh
+			clear
 		else
-			bash descomprimir.sh $NOMBRE_ARCHIVOS
+			bash $RUTA_M/descomprimir.sh $NOMB_1 $NOMB_2
 		fi
-		sleep 2
-                bash menu.sh
-
-	elif [ $OPC -eq "3" ]; then
+	
+	elif [[ $OPC -eq "3" ]]; then
 		clear
 		echo
-        	echo "Procesando..."
+                bash $RUTA_M/procesar.sh
 		sleep 2
-                bash menu.sh
+                bash $RUTA_M/menu.sh
 
-	elif [ $OPC -eq "4" ]; then
+	elif [[ $OPC -eq "4" ]]; then
 		clear
 		echo
-        	echo "Comprimiendo..."
-		sleep 2
-                bash menu.sh
+                bash $RUTA_M/comprimir.sh
+		clear
+                bash $RUTA_M/menu.sh
 
+	elif [[ $OPC == "X" ]] || [[ $OPC == "x" ]] || [[ $OPC == "exit" ]]; then
+		clear
+		echo
+       		echo "...Chau."
+ 		sleep 1
+		exit 0
 	else
-		echo "Opción no válida"
-		echo "Intente nuevamente:"
-		sleep 3
-		bash menu.sh
+		echo "   Opción no válida"
+		echo "   Intente nuevamente:"
+		sleep 2
+		bash $RUTA_M/menu.sh
 	fi
 fi
