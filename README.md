@@ -14,7 +14,7 @@ un paquete comprimido de las imágenes previamente procesadas, en formato .tar,
 que incluye información de todos los archivos.
 
 ### Creación de la imagen de Docker y ejecución del script:
-1. Descargar el archivo ´Dockerfile'
+1. Clonar el repositorio ´git clone https://github.com/FloRodil/EdP_2023_Com1.git'
 2. Ejecutar el siguiente comando: 'docker build -t gadi .'
 3. Correr el siguiente script: 'bash runGADI.sh'
 
